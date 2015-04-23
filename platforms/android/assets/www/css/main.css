@@ -1,0 +1,61 @@
+.ui-body{
+  padding: 0 15px;
+}
+.ui-header{
+  opacity: 0.9;
+  text-shadow: 5px 5px 5px #B8B8B8;
+}
+.ui-header h1{
+  text-shadow: 5px 5px 5px #B8B8B8;
+}
+/*.ui-header img{
+  right: 0px;
+  margin: 15px;
+  opacity: 0.4;
+  position: absolute;
+}*/
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+  background: transparent url('../img/activity.png');
+}
+.ui-panel{
+  background: transparent url('../img/activity_invert.png') 0 -10px;
+}
+a{
+  text-decoration: none;
+}
+.hide{
+  display: none;
+}
+.radius10 {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.profile a{
+  float: right;
+}
+#activity-notify div img{
+  height: 30px;
+  width: 30px;
+  margin: 1px 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.ui-panel p{
+  padding-bottom: 20px;
+}
+.ul-divider-thumb .ui-li-divider h2{
+  margin: 8px 5px 8px 50px;
+}
+.following a:after {
+  background-color: #63b2bd; /*#c5ce33;*/
+}
+#pagethree ul li p{
+  white-space: normal !important; 
+}
+#pagethree ul li i{
+  color: #AAA;
+  font-size: .72em;
+  font-weight: normal;
+}
