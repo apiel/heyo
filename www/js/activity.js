@@ -40,6 +40,9 @@
               $(this).find('textarea').val('');
               $(this).find('p b').text(trigger.parent().find('p b').text());
             });
+            $( "#activity-edit" ).on( "popupafteropen", function( event, ui ) {
+              $('#activity-edit input[name="name"]').val('');
+            });
             $('#activity-edit :submit').off('click').click(function() {
               $.mobile.loading( 'show', {theme: 'b', textVisible: true, text: 'saving'});
               me.query('activityAdd', $('#activity-edit'));
@@ -181,7 +184,7 @@
         onNotificationGCM: function(e) {
           var me = this;
           if (e.event === 'registered') {
-            if (e.regid.length > 0) me.gcmId = e.regid;
+            if (e.regid.length > 0) { me.gcmId = e.regid; me.query('getProfile'); }
           }
           else if (e.event === 'message') {
             me.query('getProfile');

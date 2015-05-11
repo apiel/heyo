@@ -37,10 +37,9 @@ var app = {
   // function, we must explicitly call 'app.receivedEvent(...);'
   onDeviceReady: function() {
     $.activity.init();
-    if (!$.activity.loadGcmId()) {
-      var pushNotification = window.plugins.pushNotification;
-      pushNotification.register(app.successHandler, app.errorHandler, {"senderID": "571796964886", "ecb": "$.activity.onNotificationGCM"});
-    }
+    
+    var pushNotification = window.plugins.pushNotification;
+    pushNotification.register(app.successHandler, app.errorHandler, {"senderID": "571796964886", "ecb": "$.activity.onNotificationGCM"});
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
