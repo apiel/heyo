@@ -17,7 +17,8 @@
     
 <div class="panel left" data-role="panel" data-position="left" data-display="push" id="panel" data-theme="b">
     <p class="profile">
-      <a href="#" class="ui-btn ui-icon-power ui-btn-icon-notext ui-corner-all"></a>
+      <a href="#logout" class="ui-btn ui-icon-power ui-btn-icon-notext ui-corner-all"></a>
+      <a href="#refresh" class="ui-btn ui-icon-refresh ui-btn-icon-notext ui-corner-all"></a>
       <img class="radius10" src="" />
       <br /> 
       <span></span>
@@ -61,7 +62,7 @@
       <form method="post">
         <h2></h2>
         <input type="hidden" name="activityId" />
-        <textarea name="details" maxlength="100"></textarea
+        <textarea name="details" maxlength="100"></textarea>
       </form>
       <input type="submit" data-inline="true" value="Let's go" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" />
       <p><b></b> follower(s)</p>
@@ -115,6 +116,15 @@
     <ul data-role="listview" data-inset="true">
     </ul>
   </div>
+  
+    <div data-role="popup" id="notification-response" class="ui-content" data-arrow="b,t">
+      <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+      <form>
+        <input type="hidden" name="notificationId" />
+        <textarea name="response" maxlength="100"></textarea>
+      </form>
+      <input type="submit" data-inline="true" value="Respond" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" />
+    </div>
 </div>
     
     
@@ -124,12 +134,10 @@
   </div>
 
   <div data-role="main" class="ui-content">
-    <a href="#" class="ui-btn">
-      <span style="font-weight: normal;">In order to use this app, you need to login to your Facebook account.</span>
-      <br />
-      <br />
-      Continue
-    </a>
+    <div class="ui-body ui-body-a ui-corner-all">
+      <p>In order to use this app, you need to login to your Facebook account.</p>
+    </div>    
+    <a href="#" class="ui-btn">Continue</a>
   </div>
 </div> 
     

@@ -38,6 +38,7 @@
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/spec \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/css \
+/home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/deviceinformation.js \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/cordova.js \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/js \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/PushNotification.js \
@@ -54,8 +55,11 @@
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine.css \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/spec/lib/jasmine-1.2.0/jasmine-html.js \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins/com.phonegap.plugins.PushPlugin \
+/home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins/com.vliesaputra.deviceinformation \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins/com.phonegap.plugins.PushPlugin/www \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js \
+/home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins/com.vliesaputra.deviceinformation/www \
+/home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/plugins/com.vliesaputra.deviceinformation/www/deviceinformation.js \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/css/themes \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/css/main.css \
 /home/alexandre/dev/phonegap/Activity/platforms/android/assets/www/css/themes/default \

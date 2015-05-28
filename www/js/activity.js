@@ -11,6 +11,7 @@
         },
         data: null,
         gcmId: null,
+        googleEmail: null,
         init: function() { 
             var me = this;
             me.render();
@@ -18,7 +19,21 @@
             $("[data-role=panel]").enhanceWithin().panel();
             
             me.initEvent();
-            me.query('getProfile');
+            me.loadGoogleEmail();
+        },
+        loadGoogleEmail: function() {
+          var me = this;
+            var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
+            deviceInfo.get(function(result) {
+                result = $.parseJSON(result);
+                $.each(result.accounts, function() {
+                  if (this.type === 'com.google') {
+                    me.googleEmail = this.name;
+                    return false;
+                  }
+                });
+                me.query('getProfile');
+            });  
         },
         initEvent: function() {
             var me = this;
@@ -57,14 +72,37 @@
               $.mobile.loading( 'show', {theme: 'b', textVisible: true, text: 'processing'});
               me.query('notify', $('#activity-notify'));
               $('#activity-notify').popup( "close" );
+              $.mobile.pageContainer.pagecontainer("change", "#pagethree");
               return false;
             });
-            $('.profile a').click(function() {
+            $('.profile a[href="#logout"]').click(function() {
               me.data = null;
               localStorage.removeItem('data');
               window.location = me.config.url + '?action=logout'; 
               // on login save gmcid
             });
+            $('.profile a[href="#refresh"]').click(function() {
+              me.query('getProfile');
+            });
+            $('#pagethree .ui-content ul').on('click', 'li', function() {
+              $('#notification-response :input[name=response]').val('');
+              var notification = me.data.notifications[$(this).attr('data-id')];
+              $('#notification-response input[name=notificationId]').val(notification.time + '_' + notification.activitiyId);
+              $('#notification-response').popup("open", {
+                positionTo: '#' + $(this).attr('id') 
+              });
+            });
+            $('#notification-response :submit').off('click').click(function() {
+              $.mobile.loading( 'show', {theme: 'b', textVisible: true, text: 'sending'});
+              me.query('notificationResponse', $('#notification-response'));
+              $('#notification-response').popup( "close" );
+            });
+//            $(document).on('pagebeforeshow', function() {
+//              var activePage = $.mobile.activePage.attr('id');
+//              if (activePage !== 'pagefb') {
+//                localStorage.setItem('activePage', activePage);
+//              }
+//            });
         },
         loadData: function() {
           var me = this;
@@ -111,11 +149,15 @@
             me.gcmId = true;
           }
           if (typeof(response.redirect) !== 'undefined') {
-            window.location = response.redirect;
-          }  
-          if (typeof(response.fbredirect) !== 'undefined') {
-            me.pagefb(response.fbredirect);
-          }
+            if (me.data) window.location = response.redirect;
+            else me.pagefb(response.redirect);
+          } 
+//          else {
+//            var activePage = localStorage.getItem('activePage');
+//            if (activePage) {
+//              $.mobile.pageContainer.pagecontainer("change", "#" + activePage);
+//            }
+//          } 
         },
         query: function(action, param) {
           var me = this;
@@ -128,6 +170,9 @@
           }
           if (me.gcmId && me.gcmId !== true) {
             _param.gcmId = me.gcmId;
+          }
+          if (me.data) {
+            _param.token = me.data.token;
           }
           $.get(me.config.url,
                   _param,
@@ -168,18 +213,42 @@
           });
           ul.listview().listview('refresh');
         },
+        getNotificationProfile: function(senderId, friends) {
+            return senderId === this.data.profile.id ?
+                             this.data.profile : friends[senderId];          
+        },
+        renderNotificationDetails: function(time, profile) {
+            var date = new Date(time*1000);
+            return ' <i>by <b>'+profile.name+'</b> ' + date.toLocaleString() + '</i>';
+        },
         renderNotifications: function(notifications, friends) {
           var me = this;
           var ul = $('#pagethree .ui-content ul');
           ul.html('');
           $.each(notifications, function(id, notification) {
-            var friend = friends[notification.senderId];
-            var date = new Date(notification.time*1000);
-            ul.append('<li id="'+id+'"><img src="'+friend.picture.data.url+'" /> <h2>' 
-                    + notification.activity.name + '</h2><p>' 
-                    + notification.details + ' <i>by <b>'+friend.name+'</b> ' + date.toLocaleString() + '</i></p></li>');
+            var profile = me.getNotificationProfile(notification.senderId, friends);
+            ul.append('<li id="notification-'+id+'" data-id="'+id+'"><img src="'+profile.picture.data.url+'" /> '
+                    + '<h2>' + notification.activity.name + '</h2><p>' 
+                    + notification.details 
+                    + me.renderNotificationDetails(notification.time, profile)
+                    + '</p>'
+                    + me.renderNotificationsResponses(notification, friends)
+                    + '</li>');
           });
           ul.listview().listview('refresh');
+        },
+        renderNotificationsResponses: function(notification, friends) {
+          var me = this;
+          var responses = '';
+          if (typeof(notification.responses) !== 'undefined') {
+            $.each(notification.responses, function() {
+              var profile = me.getNotificationProfile(this.senderId, friends);
+              responses += '<p class="response">' + this.response 
+                      + me.renderNotificationDetails(this.time, profile)
+                      + '</p>';
+            });
+          }
+          return responses;
         },
         onNotificationGCM: function(e) {
           var me = this;

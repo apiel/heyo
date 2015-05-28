@@ -3,6 +3,7 @@
 /home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/com/plugin/gcm/GCMIntentService.class \
 /home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/com/plugin/gcm/CordovaGCMBroadcastReceiver.class \
 /home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/com/plugin/gcm/PushPlugin.class \
+/home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/com/vliesaputra/cordova/plugins/DeviceInformation.class \
 /home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/activity/alexparadise/com/R$attr.class \
 /home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/activity/alexparadise/com/R$string.class \
 /home/alexandre/dev/phonegap/Activity/platforms/android/ant-build/classes/activity/alexparadise/com/Manifest$permission.class \

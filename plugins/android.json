@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"DeviceInformation\"><param name=\"android-package\" value=\"com.vliesaputra.cordova.plugins.DeviceInformation\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -24,7 +28,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
@@ -44,6 +48,10 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"activity.alexparadise.com.permission.C2D_MESSAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
                             "count": 1
                         }
                     ],
@@ -67,6 +75,9 @@
     },
     "installed_plugins": {
         "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "activity.alexparadise.com"
+        },
+        "com.vliesaputra.deviceinformation": {
             "PACKAGE_NAME": "activity.alexparadise.com"
         }
     },

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="activity.alexparadise.com" version="1.0.1" versionCode="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="activity.alexparadise.com" version="1.0.4" versionCode="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Heyo</name>
     <description>
         Let your friends know about your activities that you wanna share with them.
@@ -25,6 +25,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="0" />
     <gap:plugin name="com.adobe.plugins.pushplugin" />
+    <gap:plugin name="com.vliesaputra.deviceinformation" version="1.0.1" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
